@@ -1,0 +1,85 @@
+/*
+Value is the lowest component of functions, and belongs to a token. Values can be constructed and evaluated.
+Values come in one of the following value types:
+1: NUMBER, which is saved as an internal value upon creation of the value object.
+2: VARIABLE, which is x, and is specified as a number upon calling the evaluate function.
+3: TOKEN, which is the location of a token that the value does not belong to. The location of the token is set upon construction of the value.
+See class Token comments.
+*/
+public class Value {
+	public static final int NUMBER = 0;
+	public static final int VARIABLE = 1;
+	public static final int TOKEN = 2;
+
+	int location;
+	double value;
+
+	public Value(int value_type, int location){
+		switch(value_type) {
+			case NUMBER:
+				this.value = (double)location;
+				break;
+			case VARIABLE:
+				this.value = (double)location;
+				break;
+			case TOKEN:
+				this.location = location;
+				break;
+			case default:
+				System.out.println("Error: impossible operator type.\n");
+				System.exit(0);	
+		}
+	}
+	public Value(int value_type, double value){
+		switch(value_type) {
+			case NUMBER:
+				this.value = value;
+				break;
+			case VARIABLE:
+				this.value = value;
+				break;
+			case TOKEN:
+				this.location = (int)value;
+				break;
+			case default:
+				System.out.println("Error: impossible value type.\n");
+				System.exit(0);	
+		}
+	}
+	public Value(int value_type){
+		switch(value_type) {
+			case NUMBER:
+				System.out.println("Error: value is unspecified.\n");
+				System.exit(0);
+			case VARIABLE:
+				break;
+			case TOKEN:
+				System.out.println("Error: impossible value type: tried to use nonexistent token.\n");
+				System.exit(0);	
+			case default:
+				System.out.println("Error: impossible value type.\n");
+				System.exit(0);	
+		}
+	}
+	public double evaluate(double x){
+		switch(this.value_type) {
+			case NUMBER:
+				return this.value;
+				break;
+			case VARIABLE:
+				return x;
+				break;
+			case TOKEN:
+				System.out.println("So, I havent figured out that token thing yet....\n");
+				System.exit(0);	
+
+			case default:
+				System.out.println("Error: impossible operator type.\n");
+				System.exit(0);	
+		}
+	}
+
+	public int getType(){
+		return 
+	}
+}
